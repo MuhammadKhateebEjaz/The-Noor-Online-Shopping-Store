@@ -1,82 +1,214 @@
-const products = [
-  { id: 1, name: "Olive Oil 500ml", price: 1200, img: "https://via.placeholder.com/250x200/2d6a4f/D4AF37?text=Olive+Oil" },
-  { id: 2, name: "Coconut Oil 1L", price: 1500, img: "https://via.placeholder.com/250x200/2d6a4f/D4AF37?text=Coconut+Oil" },
-  { id: 3, name: "Mustard Oil 1L", price: 800, img: "https://via.placeholder.com/250x200/2d6a4f/D4AF37?text=Mustard+Oil" },
-  { id: 4, name: "Almond Oil 250ml", price: 2000, img: "https://via.placeholder.com/250x200/2d6a4f/D4AF37?text=Almond+Oil" }
-];
+// ===============================
+// THE NOOR ONLINE SHOPPING STORE
+// Developed by M.Khateeb Ejaz
+// ===============================
 
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+// Sticky Navbar
+window.addEventListener("scroll", () => {
 
-function loadProducts() {
-  const productList = document.getElementById('product-list');
-  if(!productList) return;
-  products.forEach(p => {
-    productList.innerHTML += `
-      <div class="product-card">
-        <img src="${p.img}" alt="${p.name}">
-        <h3>${p.name}</h3>
-        <p>Rs. ${p.price}</p>
-        <button class="btn" onclick="addToCart(${p.id})">Add to Cart</button>
-      </div>
-    `;
-  });
+    const header = document.querySelector("header");
+
+    if (window.scrollY > 50) {
+
+        header.style.background = "#0f3527";
+        header.style.boxShadow = "0 10px 25px rgba(0,0,0,.15)";
+
+    } else {
+
+        header.style.background = "#123d2c";
+        header.style.boxShadow = "0 5px 15px rgba(0,0,0,.10)";
+
+    }
+
+});
+
+// ===============================
+// Active Navigation
+// ===============================
+
+const currentPage = window.location.pathname.split("/").pop();
+
+document.querySelectorAll(".menu a").forEach(link => {
+
+    const href = link.getAttribute("href");
+
+    if (href === currentPage) {
+
+        link.classList.add("active");
+
+    }
+
+});
+
+// ===============================
+// Add To Cart
+// ===============================
+
+let cart = 0;
+
+const cartNumber = document.querySelector(".cart span");
+
+document.querySelectorAll(".product-card button").forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        cart++;
+
+        if(cartNumber){
+
+            cartNumber.innerHTML = cart;
+
+        }
+
+        btn.innerHTML = "✓ Added";
+
+        btn.style.background = "#28a745";
+
+        setTimeout(() => {
+
+            btn.innerHTML = "Add To Cart";
+
+            btn.style.background = "#123d2c";
+
+        },1500);
+
+    });
+
+});
+
+// ===============================
+// Contact Form Validation
+// ===============================
+
+const form = document.querySelector("form");
+
+if(form){
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const inputs = form.querySelectorAll("input, textarea");
+
+let valid = true;
+
+inputs.forEach(input=>{
+
+if(input.value.trim()===""){
+
+valid=false;
+
+input.style.border="2px solid red";
+
+}else{
+
+input.style.border="2px solid #1d5d43";
+
 }
 
-function addToCart(id) {
-  let item = cart.find(i => i.id === id);
-  if(item) item.qty++;
-  else cart.push({...products.find(p => p.id === id), qty: 1});
-  saveCart();
-  alert("Product added to cart!");
+});
+
+if(valid){
+
+alert("✅ Thank you! Your message has been sent.");
+
+form.reset();
+
 }
 
-function loadCart() {
-  const cartItems = document.getElementById('cart-items');
-  if(!cartItems) return;
-  cartItems.innerHTML = '';
-  if(cart.length === 0) { cartItems.innerHTML = "<p style='padding:20px'>Cart is empty</p>"; return; }
-  
-  cart.forEach(item => {
-    cartItems.innerHTML += `
-      <div class="cart-item">
-        <span>${item.name}</span>
-        <div>
-          <button class="qty-btn" onclick="updateQty(${item.id}, -1)">-</button>
-          <span>${item.qty}</span>
-          <button class="qty-btn" onclick="updateQty(${item.id}, 1)">+</button>
-          <button class="qty-btn" onclick="removeItem(${item.id})">Remove</button>
-        </div>
-        <span>Rs. ${item.price * item.qty}</span>
-      </div>
-    `;
-  });
-  document.getElementById('cart-total').innerText = "Total: Rs. " + cart.reduce((t,i) => t + i.price * i.qty, 0);
+});
+
 }
 
-function updateQty(id, change) {
-  let item = cart.find(i => i.id === id);
-  item.qty += change;
-  if(item.qty <= 0) removeItem(id);
-  saveCart();
-}
-function removeItem(id) {
-  cart = cart.filter(i => i.id !== id);
-  saveCart();
+// ===============================
+// Fade Animation
+// ===============================
+
+const observer = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0)";
+
 }
 
-function saveCart() {
-  localStorage.setItem('cart', JSON.stringify(cart));
-  document.getElementById('cart-count').innerText = cart.reduce((t,i) => t + i.qty, 0);
-  loadCart();
+});
+
+});
+
+document.querySelectorAll(".card,.product-card,.benefit,.info-box").forEach(item=>{
+
+item.style.opacity="0";
+
+item.style.transform="translateY(50px)";
+
+item.style.transition=".8s";
+
+observer.observe(item);
+
+});
+
+// ===============================
+// Back To Top Button
+// ===============================
+
+const topBtn=document.createElement("button");
+
+topBtn.innerHTML="↑";
+
+document.body.appendChild(topBtn);
+
+topBtn.style.position="fixed";
+topBtn.style.bottom="30px";
+topBtn.style.right="30px";
+topBtn.style.width="50px";
+topBtn.style.height="50px";
+topBtn.style.border="none";
+topBtn.style.borderRadius="50%";
+topBtn.style.background="#123d2c";
+topBtn.style.color="#fff";
+topBtn.style.fontSize="22px";
+topBtn.style.cursor="pointer";
+topBtn.style.display="none";
+topBtn.style.zIndex="9999";
+topBtn.style.boxShadow="0 10px 20px rgba(0,0,0,.2)";
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>400){
+
+topBtn.style.display="block";
+
+}else{
+
+topBtn.style.display="none";
+
 }
 
-document.getElementById('checkout-btn')?.addEventListener('click', () => {
-  let msg = "Order from The Noor Store:%0A";
-  cart.forEach(i => msg += `${i.name} x ${i.qty} = Rs.${i.price*i.qty}%0A`);
-  msg += `Total: Rs.${cart.reduce((t,i) => t + i.price * i.qty, 0)}`;
-  window.open(`https://wa.me/923xxxxxxxxxx?text=${msg}`);
-})
+});
 
-loadProducts();
-loadCart();
-saveCart();
+topBtn.addEventListener("click",()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+});
+
+// ===============================
+// Console Message
+// ===============================
+
+console.log("%cThe Noor Online Shopping Store",
+"color:#e5b73b;font-size:20px;font-weight:bold;");
+
+console.log("%cDesigned & Developed by M.Khateeb Ejaz",
+"color:#123d2c;font-size:15px;");
