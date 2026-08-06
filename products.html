@@ -1,29 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Products - The Noor Online Shopping Store</title>
-  <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Products | The Noor</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/products.css">
+
 </head>
+
 <body>
-  <header>
-    <h1>✨ The Noor Online Shopping Store</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="products.html" class="active">Products</a>
-      <a href="contact.html">Contact</a>
-      <a href="cart.html">Cart <span id="cart-count">0</span></a>
-    </nav>
-  </header>
 
-  <h2 class="page-title">Our Products</h2>
-  <div class="product-grid" id="product-list"></div>
+<header>
 
-  <footer>
-    <p>© 2026 The Noor Online Shopping Store.</p>
-  </footer>
-  <script src="script.js"></script>
+<nav class="navbar">
+
+<a href="index.html" class="logo">
+
+<i class="fa-solid fa-leaf"></i>
+
+<div>
+
+<h2>The Noor</h2>
+
+<span>ONLINE SHOPPING STORE</span>
+
+</div>
+
+</a>
+
+<ul class="menu">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a class="active" href="#">Products</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+<div class="cart">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+<span>0</span>
+
+</div>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="products-hero">
+
+<h1>Our Organic Products</h1>
+
+<p>100% Natural • Premium Quality • Fast Delivery</p>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="products">
+
+<h2>Featured Products</h2>
+
+<div class="product-grid">
+
+<!-- Product 1 -->
+
+<div class="product-card">
+
+<div class="badge">NEW</div>
+
+<img src="images/product1.png" alt="">
+
+<h3>Aloe Vera Gel</h3>
+
+<div class="rating">
+
+★★★★★
+
+</div>
+
+<div class="price">
+
+<span>Rs.799</span>
+
+<del>999</del>
+
+</div>
+
+<button>Add To Cart</button>
+
+</div>
+
+<!-- Product 2 -->
+
+<div class="product-card">
+
+<img src="images/product2.png" alt="">
+
+<h3>Organic Hair Oil</h3>
+
+<div class="rating">
+
+★★★★★
+
+</div>
+
+<div class="price">
+
+<span>Rs.999</span>
+
+<del>1299</del>
+
+</div>
+
+<button>Add To Cart</button>
+
+</div>
+
+<!-- Product 3 -->
+
+<div class="product-card">
+
+<img src="images/product3.png" alt="">
+
+<h3>Face Cream</h3>
+
+<div class="rating">
+
+★★★★★
+
+</div>
+
+<div class="price">
+
+<span>Rs.699</span>
+
+<del>899</del>
+
+</div>
+
+<button>Add To Cart</button>
+
+</div>
+
+<!-- Product 4 -->
+
+<div class="product-card">
+
+<img src="images/product4.png" alt="">
+
+<h3>Vitamin Serum</h3>
+
+<div class="rating">
+
+★★★★★
+
+</div>
+
+<div class="price">
+
+<span>Rs.1199</span>
+
+<del>1499</del>
+
+</div>
+
+<button>Add To Cart</button>
+
+</div>
+
+<!-- Product 5 -->
+
+<div class="product-card">
+
+<img src="images/product5.png" alt="">
+
+<h3>Herbal Shampoo</h3>
+
+<div class="rating">
+
+★★★★★
+
+</div>
+
+<div class="price">
+
+<span>Rs.899</span>
+
+<del>1099</del>
+
+</div>
+
+<button>Add To Cart</button>
+
+</div>
+
+<!-- Product 6 -->
+
+<div class="product-card">
+
+<img src="images/product6.png" alt="">
+
+<h3>Natural Soap</h3>
+
+<div class="rating">
+
+★★★★★
+
+</div>
+
+<div class="price">
+
+<span>Rs.399</span>
+
+<del>499</del>
+
+</div>
+
+<button>Add To Cart</button>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 The Noor Online Shopping Store
+
+</p>
+
+<p class="developer">
+
+Designed & Developed by
+
+<strong>M.Khateeb Ejaz</strong>
+
+</p>
+
+</footer>
+
 </body>
+
 </html>
