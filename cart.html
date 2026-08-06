@@ -196,7 +196,124 @@ Proceed To Checkout
 </footer>
 
 <script src="script.js"></script>
+<script>
 
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const cartItems = document.querySelector(".cart-items");
+
+const subtotal = document.getElementById("subtotal");
+
+const total = document.getElementById("total");
+
+
+function displayCart(){
+
+    cartItems.innerHTML = "";
+
+    let sum = 0;
+
+
+    if(cart.length === 0){
+
+        cartItems.innerHTML = `
+        
+        <h2>Your Cart is Empty</h2>
+
+        `;
+
+        subtotal.innerHTML = "Rs.0";
+        total.innerHTML = "Rs.0";
+
+        return;
+
+    }
+
+
+    cart.forEach((item,index)=>{
+
+
+        sum += item.price * item.qty;
+
+
+        cartItems.innerHTML += `
+
+
+        <div class="cart-item">
+
+
+            <img src="${item.image}" alt="">
+
+
+            <div class="details">
+
+                <h3>${item.name}</h3>
+
+                <p>Rs.${item.price}</p>
+
+
+            </div>
+
+
+            <input type="number"
+            value="${item.qty}"
+            min="1"
+            onchange="updateQty(${index},this.value)">
+
+
+            <button onclick="removeItem(${index})">
+
+                <i class="fa-solid fa-trash"></i>
+
+            </button>
+
+
+        </div>
+
+
+        `;
+
+
+    });
+
+
+    subtotal.innerHTML = "Rs."+sum;
+
+    total.innerHTML = "Rs."+sum;
+
+
+}
+
+
+
+function updateQty(index,qty){
+
+    cart[index].qty = Number(qty);
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    displayCart();
+
+}
+
+
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    displayCart();
+
+}
+
+
+
+displayCart();
+
+
+</script>
 </body>
 
 </html>
