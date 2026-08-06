@@ -41,40 +41,81 @@ document.querySelectorAll(".menu a").forEach(link => {
 });
 
 // ===============================
-// Add To Cart
+// REAL ADD TO CART
 // ===============================
 
-let cart = 0;
+const buttons = document.querySelectorAll(".add-cart");
 
-const cartNumber = document.querySelector(".cart span");
+buttons.forEach(button => {
 
-document.querySelectorAll(".product-card button").forEach(btn => {
+    button.addEventListener("click", () => {
 
-    btn.addEventListener("click", () => {
+        const card = button.closest(".product-card");
 
-        cart++;
+        const product = {
 
-        if(cartNumber){
+            id: card.dataset.id,
+            name: card.dataset.name,
+            price: Number(card.dataset.price),
+            image: card.dataset.image,
+            qty: 1
 
-            cartNumber.innerHTML = cart;
+        };
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existing = cart.find(item => item.id === product.id);
+
+        if(existing){
+
+            existing.qty++;
+
+        }else{
+
+            cart.push(product);
 
         }
 
-        btn.innerHTML = "✓ Added";
+        localStorage.setItem("cart", JSON.stringify(cart));
 
-        btn.style.background = "#28a745";
+        updateCartCounter();
+
+        button.innerHTML = "✓ Added";
+
+        button.style.background = "#28a745";
 
         setTimeout(() => {
 
-            btn.innerHTML = "Add To Cart";
+            button.innerHTML = "Add To Cart";
+            button.style.background = "#123d2c";
 
-            btn.style.background = "#123d2c";
-
-        },1500);
+        },1000);
 
     });
 
 });
+
+function updateCartCounter(){
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let total = 0;
+
+    cart.forEach(item => {
+
+        total += item.qty;
+
+    });
+
+    document.querySelectorAll(".cart span, .cart-count span").forEach(counter => {
+
+        counter.innerHTML = total;
+
+    });
+
+}
+
+updateCartCounter();
 
 // ===============================
 // Contact Form Validation
