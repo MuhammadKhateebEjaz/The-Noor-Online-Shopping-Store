@@ -3,185 +3,165 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Shopping Cart | The Noor</title>
+    <title>Shopping Cart | The Noor</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    >
 
-<link rel="stylesheet" href="cart.css">
+    <!-- Cart CSS -->
+    <link rel="stylesheet" href="cart.css">
 
 </head>
 
+
 <body>
+
+
+<!-- ========================================
+     NAVBAR
+======================================== -->
 
 <header>
 
-<nav class="navbar">
+    <nav class="navbar">
 
-<a href="index.html" class="logo">
 
-<i class="fa-solid fa-leaf"></i>
+        <!-- LOGO -->
 
-<div>
+        <a href="index.html" class="logo">
 
-<h2>The Noor</h2>
+            <i class="fa-solid fa-leaf"></i>
 
-<span>ONLINE SHOPPING STORE</span>
+            <div>
 
-</div>
+                <h2>The Noor</h2>
 
-</a>
+                <span>ONLINE SHOPPING STORE</span>
 
-<ul class="menu">
+            </div>
 
-<li><a href="index.html">Home</a></li>
+        </a>
 
-<li><a href="about.html">About</a></li>
 
-<li><a href="products.html">Products</a></li>
+        <!-- MENU -->
 
-<li><a href="contact.html">Contact</a></li>
+        <ul class="menu">
 
-<li><a class="active" href="#">Cart</a></li>
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
 
-</ul>
+            <li>
+                <a href="about.html">
+                    About
+                </a>
+            </li>
 
-<div class="cart-count">
+            <li>
+                <a href="products.html">
+                    Products
+                </a>
+            </li>
 
-<i class="fa-solid fa-cart-shopping"></i>
+            <li>
+                <a href="contact.html">
+                    Contact
+                </a>
+            </li>
 
-<span>3</span>
+            <li>
+                <a href="#" class="active">
+                    Cart
+                </a>
+            </li>
 
-</div>
+        </ul>
 
-</nav>
+
+        <!-- CART -->
+
+        <a href="cart.html" class="cart-count">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span>0</span>
+
+        </a>
+
+
+    </nav>
 
 </header>
 
+
+
+<!-- ========================================
+     CART HERO
+======================================== -->
+
 <section class="cart-hero">
 
-<h1>Your Shopping Cart</h1>
+    <h1>
+        Your Shopping Cart
+    </h1>
 
-<p>Review your selected products</p>
+    <p>
+        Review your selected products
+    </p>
 
 </section>
 
-<!-- <section class="shopping-cart">
-
-<div class="cart-items">
-
-<div class="cart-item">
-
-<img src="images/product1.png">
-
-<div class="details">
-
-<h3>Aloe Vera Gel</h3>
-
-<p>Rs.799</p>
-
-</div>
-
-<input type="number" value="1" min="1">
-
-<button class="remove">
-
-<i class="fa-solid fa-trash"></i>
-
-</button>
-
-</div>
-
-<div class="cart-item">
-
-<img src="images/product2.png">
-
-<div class="details">
-
-<h3>Organic Hair Oil</h3>
-
-<p>Rs.999</p>
-
-</div>
-
-<input type="number" value="2" min="1">
-
-<button class="remove">
-
-<i class="fa-solid fa-trash"></i>
-
-</button>
-
-</div>
-
-</div>
-
-<div class="summary">
-
-<h2>Order Summary</h2>
-
-<div>
-
-<span>Subtotal</span>
-
-<strong>Rs.2797</strong>
-
-</div>
-
-<div>
-
-<span>Shipping</span>
-
-<strong>FREE</strong>
-
-</div>
-
-<div>
-
-<span>Total</span>
-
-<h3>Rs.2797</h3>
-
-</div>
-
-<button>
-
-Proceed To Checkout
-
-</button>
-
-</div>
-
-</section> -->
 
 
-    <section class="shopping-cart">
+<!-- ========================================
+     SHOPPING CART
+======================================== -->
 
-    <!-- PRODUCTS WILL SHOW HERE -->
+<section class="shopping-cart">
+
+
+    <!-- CART PRODUCTS -->
+
     <div class="cart-items">
 
+        <!-- Products will be added by cart.js -->
+
     </div>
+
 
 
     <!-- ORDER SUMMARY -->
 
     <div class="summary">
 
-        <h2>Order Summary</h2>
+        <h2>
+            Order Summary
+        </h2>
 
 
         <div class="summary-row">
 
-            <span>Subtotal</span>
+            <span>
+                Subtotal
+            </span>
 
             <strong id="subtotal">
                 Rs.0
@@ -192,9 +172,11 @@ Proceed To Checkout
 
         <div class="summary-row">
 
-            <span>Shipping</span>
+            <span>
+                Shipping
+            </span>
 
-            <strong>
+            <strong class="free">
                 FREE
             </strong>
 
@@ -203,7 +185,9 @@ Proceed To Checkout
 
         <div class="summary-row total">
 
-            <span>Total</span>
+            <span>
+                Total
+            </span>
 
             <h3 id="total">
                 Rs.0
@@ -212,9 +196,22 @@ Proceed To Checkout
         </div>
 
 
-        <button>
+        <button class="checkout-btn">
+
+            <i class="fa-solid fa-lock"></i>
+
             Proceed To Checkout
+
         </button>
+
+
+        <a href="products.html" class="continue-shopping">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Continue Shopping
+
+        </a>
 
 
     </div>
@@ -222,161 +219,85 @@ Proceed To Checkout
 
 </section>
 
+
+
+<!-- ========================================
+     FOOTER
+======================================== -->
+
 <footer>
 
-    <p>© 2026 The Noor Online Shopping Store. All Rights Reserved.</p>
+
+    <p>
+        © 2026 The Noor Online Shopping Store.
+        All Rights Reserved.
+    </p>
+
 
     <div class="footer-links">
 
-        <a href="index.html">Home</a>
+        <a href="index.html">
+            Home
+        </a>
 
-        <a href="about.html">About</a>
+        <a href="about.html">
+            About
+        </a>
 
-        <a href="products.html">Products</a>
+        <a href="products.html">
+            Products
+        </a>
 
-        <a href="contact.html">Contact</a>
+        <a href="contact.html">
+            Contact
+        </a>
 
     </div>
+
 
     <div class="social">
 
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#">
+            <i class="fab fa-facebook-f"></i>
+        </a>
 
-        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#">
+            <i class="fab fa-instagram"></i>
+        </a>
 
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#">
+            <i class="fab fa-whatsapp"></i>
+        </a>
 
     </div>
 
+
     <p class="developer">
-        Designed & Developed by <strong>M.Khateeb Ejaz</strong>
+
+        Designed & Developed by
+
+        <strong>
+            M.Khateeb Ejaz
+        </strong>
+
     </p>
+
 
 </footer>
 
+
+
+<!-- ========================================
+     JAVASCRIPT
+======================================== -->
+
+<!-- ONLY ONCE -->
 <script src="script.js"></script>
-<script>
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+<!-- CART JS -->
+<script src="cart.js"></script>
 
-const cartItems = document.querySelector(".cart-items");
 
-const subtotal = document.getElementById("subtotal");
-
-const total = document.getElementById("total");
-
-
-function displayCart(){
-
-    cartItems.innerHTML = "";
-
-    let sum = 0;
-
-
-    if(cart.length === 0){
-
-        cartItems.innerHTML = `
-        
-        <h2>Your Cart is Empty</h2>
-
-        `;
-
-        subtotal.innerHTML = "Rs.0";
-        total.innerHTML = "Rs.0";
-
-        return;
-
-    }
-
-
-    cart.forEach((item,index)=>{
-
-
-        sum += item.price * item.qty;
-
-
-        cartItems.innerHTML += `
-
-
-        <div class="cart-item">
-
-
-            <img src="${item.image}" alt="">
-
-
-            <div class="details">
-
-                <h3>${item.name}</h3>
-
-                <p>Rs.${item.price}</p>
-
-
-            </div>
-
-
-            <input type="number"
-            value="${item.qty}"
-            min="1"
-            onchange="updateQty(${index},this.value)">
-
-
-            <button onclick="removeItem(${index})">
-
-                <i class="fa-solid fa-trash"></i>
-
-            </button>
-
-
-        </div>
-
-
-        `;
-
-
-    });
-
-
-    subtotal.innerHTML = "Rs."+sum;
-
-    total.innerHTML = "Rs."+sum;
-
-
-}
-
-
-
-function updateQty(index,qty){
-
-    cart[index].qty = Number(qty);
-
-    localStorage.setItem("cart",JSON.stringify(cart));
-
-    displayCart();
-
-}
-
-
-
-function removeItem(index){
-
-    cart.splice(index,1);
-
-    localStorage.setItem("cart",JSON.stringify(cart));
-
-    displayCart();
-
-}
-
-
-
-displayCart();
-
-
-</script>
-    <script src="script.js"></script>
-    
-    <script src="cart.js"></script>
-    
 </body>
 
 </html>
