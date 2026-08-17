@@ -20,7 +20,7 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 
 // ========================================
-// ELEMENTS
+// DOM ELEMENTS
 // ========================================
 
 const checkoutItems =
@@ -37,32 +37,6 @@ const checkoutForm =
 
 
 // ========================================
-// UPDATE CART COUNTER
-// ========================================
-
-function updateCheckoutCartCounter() {
-
-    let total = 0;
-
-    cart.forEach(item => {
-
-        total += Number(item.qty) || 0;
-
-    });
-
-
-    document
-        .querySelectorAll(".cart-count span, .cart span")
-        .forEach(counter => {
-
-            counter.textContent = total;
-
-        });
-
-}
-
-
-// ========================================
 // FORMAT PRICE
 // ========================================
 
@@ -74,10 +48,10 @@ function formatPrice(price) {
 
 
 // ========================================
-// DISPLAY CART
+// DISPLAY CART PRODUCTS
 // ========================================
 
-function displayCheckoutCart() {
+function displayCheckoutItems() {
 
     if (!checkoutItems) {
         return;
@@ -97,169 +71,85 @@ function displayCheckoutCart() {
 
                 <i class="fa-solid fa-cart-shopping"></i>
 
-                <h3>Your cart is empty</h3>
+                <h3>
+                    Your cart is empty
+                </h3>
 
-                <p>Please add products before checkout.</p>
-
-                <a href="products.html">
-                    Shop Products
-                </a>
+                <p>
+                    Please add products before checkout.
+                </p>
 
             </div>
 
         `;
 
-
-        checkoutSubtotal.textContent = "Rs.0";
-
-        checkoutTotal.textContent = "Rs.0";
+        if (checkoutForm) {
+            checkoutForm.style.opacity = "0.5";
+            checkoutForm.style.pointerEvents = "none";
+        }
 
         return;
-
     }
 
 
-    let subtotal = 0;
-
+    // PRODUCTS
 
     cart.forEach(item => {
 
-        const price =
-            Number(item.price) || 0;
-
-        const qty =
-            Number(item.qty) || 1;
-
         const itemTotal =
-            price * qty;
+            Number(item.price) * Number(item.qty);
 
 
-        subtotal += itemTotal;
-
-
-        const div =
+        const itemElement =
             document.createElement("div");
 
 
-        div.className = "checkout-item";
+        itemElement.className =
+            "checkout-item";
 
 
-        div.innerHTML = `
+        itemElement.innerHTML = `
 
             <img
                 src="${item.image}"
                 alt="${item.name}"
             >
 
-            <div class="checkout-item-details">
+            <div class="checkout-item-info">
 
-                <h4>
+                <h3>
                     ${item.name}
-                </h4>
+                </h3>
 
                 <p>
-                    Qty: ${qty} × ${formatPrice(price)}
+                    Rs.${Number(item.price).toLocaleString("en-PK")}
+                    ×
+                    ${item.qty}
                 </p>
 
             </div>
 
             <div class="checkout-item-price">
 
-                ${formatPrice(itemTotal)}
+                Rs.${itemTotal.toLocaleString("en-PK")}
 
             </div>
 
         `;
 
 
-        checkoutItems.appendChild(div);
+        checkoutItems.appendChild(itemElement);
 
     });
-
-
-    checkoutSubtotal.textContent =
-        formatPrice(subtotal);
-
-
-    checkoutTotal.textContent =
-        formatPrice(subtotal);
 
 }
 
 
 // ========================================
-// PLACE ORDER ON WHATSAPP
+// CALCULATE TOTAL
 // ========================================
 
-checkoutForm.addEventListener("submit", function(e) {
-
-    e.preventDefault();
-
-
-    // Check cart
-
-    if (cart.length === 0) {
-
-        alert(
-            "Your cart is empty. Please add products first."
-        );
-
-        window.location.href = "products.html";
-
-        return;
-
-    }
-
-
-    // ====================================
-    // CUSTOMER DETAILS
-    // ====================================
-
-    const customerName =
-        document.getElementById("name").value.trim();
-
-    const phone =
-        document.getElementById("phone").value.trim();
-
-    const city =
-        document.getElementById("city").value.trim();
-
-    const address =
-        document.getElementById("address").value.trim();
-
-    const note =
-        document.getElementById("note").value.trim();
-
-
-    const payment =
-        document.querySelector(
-            'input[name="payment"]:checked'
-        ).value;
-
-
-    // ====================================
-    // VALIDATION
-    // ====================================
-
-    if (
-        !customerName ||
-        !phone ||
-        !city ||
-        !address
-    ) {
-
-        alert(
-            "Please fill all required fields."
-        );
-
-        return;
-
-    }
-
-
-    // ====================================
-    // CALCULATE TOTAL
-    // ====================================
+function calculateTotal() {
 
     let subtotal = 0;
 
@@ -267,138 +157,353 @@ checkoutForm.addEventListener("submit", function(e) {
     cart.forEach(item => {
 
         subtotal +=
-            Number(item.price) *
-            Number(item.qty);
+            Number(item.price) * Number(item.qty);
 
     });
 
 
-    const shipping = 0;
+    if (checkoutSubtotal) {
 
-    const total = subtotal + shipping;
-
-
-    // ====================================
-    // ORDER MESSAGE
-    // ====================================
-
-    let message = "";
-
-    message +=
-        "🛒 *NEW ORDER — THE NOOR*\n";
-
-    message +=
-        "━━━━━━━━━━━━━━━━━━━━\n\n";
-
-
-    // CUSTOMER
-
-    message +=
-        "👤 *CUSTOMER DETAILS*\n";
-
-    message +=
-        `Name: ${customerName}\n`;
-
-    message +=
-        `Phone: ${phone}\n`;
-
-    message +=
-        `City: ${city}\n`;
-
-    message +=
-        `Address: ${address}\n`;
-
-    message +=
-        `Payment: ${payment}\n`;
-
-
-    if (note) {
-
-        message +=
-            `Note: ${note}\n`;
+        checkoutSubtotal.innerHTML =
+            formatPrice(subtotal);
 
     }
 
 
-    message +=
-        "\n🛍️ *ORDER DETAILS*\n";
+    if (checkoutTotal) {
 
-    message +=
-        "━━━━━━━━━━━━━━━━━━━━\n";
+        checkoutTotal.innerHTML =
+            formatPrice(subtotal);
+
+    }
 
 
-    // PRODUCTS
+    return subtotal;
+
+}
+
+
+// ========================================
+// CREATE WHATSAPP MESSAGE
+// ========================================
+
+function createWhatsAppMessage(
+    name,
+    phone,
+    whatsapp,
+    email,
+    address,
+    city,
+    payment,
+    total
+) {
+
+
+    let message =
+        "🛍️ *NEW ORDER - THE NOOR ONLINE SHOPPING STORE*";
+
+
+    message += "\n\n";
+
+
+    message += "👤 *Customer Information*";
+
+
+    message += "\n";
+
+    message += "Name: " + name;
+
+
+    message += "\n";
+
+    message += "Phone: " + phone;
+
+
+    message += "\n";
+
+    message += "WhatsApp: " + whatsapp;
+
+
+    if (email) {
+
+        message += "\n";
+
+        message += "Email: " + email;
+
+    }
+
+
+    message += "\n";
+
+    message += "City: " + city;
+
+
+    message += "\n";
+
+    message += "Address: " + address;
+
+
+    message += "\n\n";
+
+
+    message += "🛒 *Order Details*";
+
+
+    message += "\n";
+
 
     cart.forEach((item, index) => {
 
-        const price =
-            Number(item.price);
-
-        const qty =
-            Number(item.qty);
-
         const itemTotal =
-            price * qty;
+            Number(item.price) * Number(item.qty);
+
+
+        message += "\n";
 
 
         message +=
-            `\n${index + 1}. *${item.name}*\n`;
+            (index + 1) +
+            ". " +
+            item.name;
+
 
         message +=
-            `   Qty: ${qty}\n`;
+            " × " +
+            item.qty;
+
 
         message +=
-            `   Price: ${formatPrice(price)}\n`;
-
-        message +=
-            `   Total: ${formatPrice(itemTotal)}\n`;
+            " = Rs." +
+            itemTotal.toLocaleString("en-PK");
 
     });
 
 
-    // TOTAL
+    message += "\n\n";
 
-    message +=
-        "\n━━━━━━━━━━━━━━━━━━━━\n";
 
-    message +=
-        `💰 Subtotal: *${formatPrice(subtotal)}*\n`;
+    message += "🚚 Shipping: FREE";
 
-    message +=
-        "🚚 Shipping: *FREE*\n";
 
-    message +=
-        `💵 TOTAL: *${formatPrice(total)}*\n`;
+    message += "\n";
 
 
     message +=
-        "\n━━━━━━━━━━━━━━━━━━━━\n";
+        "💰 *Total: Rs." +
+        total.toLocaleString("en-PK") +
+        "*";
+
+
+    message += "\n\n";
+
 
     message +=
-        "Thank you for shopping with\n";
+        "💳 Payment Method: " +
+        payment;
+
+
+    message += "\n\n";
+
 
     message +=
-        "*The Noor Online Shopping Store*";
+        "Thank you for shopping with The Noor! 🌿";
 
 
-    // ====================================
-    // WHATSAPP URL
-    // ====================================
+    return message;
 
-    const whatsappURL =
-        "https://wa.me/" +
-        WHATSAPP_NUMBER +
-        "?text=" +
-        encodeURIComponent(message);
+}
 
 
-    // ====================================
-    // OPEN WHATSAPP
-    // ====================================
+// ========================================
+// FORM SUBMIT
+// ========================================
 
-    window.open(
-        whatsappURL,
-        "_blank"
+if (checkoutForm) {
+
+    checkoutForm.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            // CHECK CART
+
+            if (cart.length === 0) {
+
+                alert(
+                    "Your cart is empty. Please add a product first."
+                );
+
+                return;
+
+            }
+
+
+            // GET CUSTOMER DATA
+
+            const name =
+                document
+                .getElementById("customerName")
+                .value
+                .trim();
+
+
+            const phone =
+                document
+                .getElementById("customerPhone")
+                .value
+                .trim();
+
+
+            const whatsapp =
+                document
+                .getElementById("whatsappNumber")
+                .value
+                .trim();
+
+
+            const email =
+                document
+                .getElementById("customerEmail")
+                .value
+                .trim();
+
+
+            const address =
+                document
+                .getElementById("customerAddress")
+                .value
+                .trim();
+
+
+            const city =
+                document
+                .getElementById("customerCity")
+                .value
+                .trim();
+
+
+            const paymentElement =
+                document.querySelector(
+                    'input[name="payment"]:checked'
+                );
+
+
+            const payment =
+                paymentElement
+                    ? paymentElement.value
+                    : "Cash on Delivery";
+
+
+            // TOTAL
+
+            const total =
+                calculateTotal();
+
+
+            // VALIDATION
+
+            if (
+                !name ||
+                !phone ||
+                !whatsapp ||
+                !address ||
+                !city
+            ) {
+
+                alert(
+                    "Please fill all required fields."
+                );
+
+                return;
+
+            }
+
+
+            // CREATE MESSAGE
+
+            const message =
+                createWhatsAppMessage(
+                    name,
+                    phone,
+                    whatsapp,
+                    email,
+                    address,
+                    city,
+                    payment,
+                    total
+                );
+
+
+            // ENCODE MESSAGE
+
+            const encodedMessage =
+                encodeURIComponent(message);
+
+
+            // WHATSAPP URL
+
+            const whatsappURL =
+                `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+
+            // CLEAR CART
+
+            localStorage.removeItem("cart");
+
+
+            // OPEN WHATSAPP
+
+            window.open(
+                whatsappURL,
+                "_blank"
+            );
+
+
+            // RESET FORM
+
+            checkoutForm.reset();
+
+
+            // UPDATE CART COUNT
+
+            document
+                .querySelectorAll(
+                    ".cart-count span, .cart span"
+                )
+                .forEach(counter => {
+
+                    counter.innerHTML = "0";
+
+                });
+
+
+        }
     );
 
-});
+}
+
+
+// ========================================
+// INITIALIZE
+// ========================================
+
+displayCheckoutItems();
+
+calculateTotal();
+
+
+// ========================================
+// CONSOLE
+// ========================================
+
+console.log(
+    "%cThe Noor Checkout System",
+    "color:#e5b73b;font-size:18px;font-weight:bold;"
+);
+
+console.log(
+    "%cWhatsApp Order Number: +92 304 8045082",
+    "color:#123d2c;font-size:14px;font-weight:bold;"
+);
