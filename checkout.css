@@ -46,6 +46,16 @@ a {
 }
 
 
+button,
+input,
+textarea,
+select {
+
+    font-family: inherit;
+
+}
+
+
 /* =========================================
    VARIABLES
 ========================================= */
@@ -62,13 +72,14 @@ a {
 
     --white: #ffffff;
 
+    --light: #f8faf7;
+
     --text: #666666;
 
     --border: #e5ebe6;
 
-    --light: #f8faf7;
-
-    --shadow: 0 15px 40px rgba(0,0,0,.08);
+    --shadow:
+        0 15px 40px rgba(0,0,0,.08);
 
 }
 
@@ -90,7 +101,8 @@ header {
 
     z-index: 999;
 
-    box-shadow: 0 8px 25px rgba(0,0,0,.15);
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.15);
 
 }
 
@@ -112,7 +124,9 @@ header {
 }
 
 
-/* LOGO */
+/* =========================================
+   LOGO
+========================================= */
 
 .logo {
 
@@ -122,7 +136,7 @@ header {
 
     gap: 14px;
 
-    color: white;
+    color: #ffffff;
 
 }
 
@@ -155,7 +169,7 @@ header {
 
     margin-top: 5px;
 
-    color: white;
+    color: #ffffff;
 
     font-size: 12px;
 
@@ -164,7 +178,9 @@ header {
 }
 
 
-/* MENU */
+/* =========================================
+   MENU
+========================================= */
 
 .menu {
 
@@ -179,28 +195,55 @@ header {
 }
 
 
-.menu a {
+.menu li a {
 
-    color: white;
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #ffffff;
 
     font-size: 16px;
 
     font-weight: 600;
 
-    transition: .3s;
+    transition: .3s ease;
 
 }
 
 
-.menu a:hover,
-.menu a.active {
+.menu li a i {
+
+    color: var(--gold);
+
+    font-size: 15px;
+
+    transition: .3s ease;
+
+}
+
+
+.menu li a:hover,
+.menu li a.active {
 
     color: var(--gold);
 
 }
 
 
-/* CART */
+.menu li a:hover i,
+.menu li a.active i {
+
+    color: var(--gold);
+
+}
+
+
+/* =========================================
+   CART COUNT
+========================================= */
 
 .cart-count {
 
@@ -210,9 +253,16 @@ header {
 
     gap: 10px;
 
-    color: white;
+    color: #ffffff;
 
     font-size: 22px;
+
+}
+
+
+.cart-count:hover {
+
+    color: var(--gold);
 
 }
 
@@ -243,6 +293,48 @@ header {
 
 
 /* =========================================
+   MOBILE MENU BUTTON
+========================================= */
+
+.menu-toggle {
+
+    display: none;
+
+    position: fixed;
+
+    top: 18px;
+
+    right: 18px;
+
+    width: 45px;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: var(--gold);
+
+    color: var(--green);
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 10002;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.2);
+
+}
+
+
+/* =========================================
    HERO
 ========================================= */
 
@@ -262,7 +354,7 @@ header {
 
     text-align: center;
 
-    color: white;
+    color: #ffffff;
 
     background:
 
@@ -286,7 +378,7 @@ header {
 
     font-weight: 800;
 
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 
 }
 
@@ -329,57 +421,105 @@ header {
 
 .checkout-form {
 
-    background: white;
+    background: #ffffff;
 
     padding: 40px;
 
     border-radius: 22px;
 
-    box-shadow: var(--shadow);
-
     border: 1px solid var(--border);
+
+    box-shadow: var(--shadow);
 
 }
 
 
-.checkout-form h2 {
+.section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 28px;
+
+}
+
+
+.section-title i {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    background: #eef8f1;
 
     color: var(--green);
 
-    font-size: 27px;
+    display: flex;
 
-    margin-bottom: 30px;
+    align-items: center;
 
-    padding-bottom: 20px;
+    justify-content: center;
 
-    border-bottom: 1px solid var(--border);
+    font-size: 19px;
 
 }
 
 
-.checkout-form h2 i {
+.section-title h2 {
 
-    color: var(--gold);
+    color: var(--green);
 
-    margin-right: 10px;
+    font-size: 25px;
+
+}
+
+
+.address-title {
+
+    margin-top: 35px;
+
+}
+
+
+.payment-title {
+
+    margin-top: 35px;
 
 }
 
 
 /* =========================================
-   FORM GROUP
+   FORM
 ========================================= */
+
+#checkoutForm {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+}
+
 
 .form-group {
 
-    margin-bottom: 22px;
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
 
 }
 
 
 .form-group label {
-
-    display: block;
 
     color: var(--green);
 
@@ -387,13 +527,23 @@ header {
 
     font-weight: 600;
 
-    margin-bottom: 8px;
+}
+
+
+.form-group label span {
+
+    color: #999;
+
+    font-size: 12px;
+
+    font-weight: 400;
 
 }
 
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
 
     width: 100%;
 
@@ -405,7 +555,7 @@ header {
 
     outline: none;
 
-    background: #fafcfa;
+    background: #fafcfb;
 
     color: #333;
 
@@ -417,13 +567,15 @@ header {
 
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
 
     border-color: var(--green);
 
-    background: white;
+    background: #ffffff;
 
-    box-shadow: 0 0 0 4px rgba(18,61,44,.08);
+    box-shadow:
+        0 0 0 4px rgba(18,61,44,.07);
 
 }
 
@@ -437,85 +589,113 @@ header {
 }
 
 
-/* =========================================
-   PAYMENT
-========================================= */
-
-.payment-options {
+.form-row {
 
     display: grid;
 
     grid-template-columns: 1fr 1fr;
 
-    gap: 15px;
+    gap: 18px;
+
+}
+
+
+/* =========================================
+   PAYMENT OPTIONS
+========================================= */
+
+.payment-options {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
 
 }
 
 
 .payment-option {
 
-    cursor: pointer;
-
-}
-
-
-.payment-option input {
-
-    display: none;
-
-}
-
-
-.payment-option span {
-
     display: flex;
 
     align-items: center;
 
-    justify-content: center;
+    gap: 12px;
 
-    gap: 9px;
-
-    padding: 15px 10px;
+    padding: 17px;
 
     border: 2px solid #e5ebe6;
 
-    border-radius: 12px;
+    border-radius: 13px;
 
-    color: var(--green);
-
-    font-size: 14px;
-
-    font-weight: 600;
+    cursor: pointer;
 
     transition: .3s;
 
 }
 
 
-.payment-option span i {
-
-    color: var(--gold);
-
-    font-size: 18px;
-
-}
-
-
-.payment-option input:checked + span {
-
-    background: var(--green);
-
-    color: white;
+.payment-option:hover {
 
     border-color: var(--green);
 
+    background: #f8fbf8;
+
 }
 
 
-.payment-option input:checked + span i {
+.payment-option input {
 
-    color: var(--gold);
+    accent-color: var(--green);
+
+    width: 18px;
+
+    height: 18px;
+
+}
+
+
+.payment-content {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+}
+
+
+.payment-content > i {
+
+    font-size: 25px;
+
+    color: var(--green);
+
+}
+
+
+.payment-content strong {
+
+    display: block;
+
+    color: var(--green);
+
+    font-size: 15px;
+
+}
+
+
+.payment-content small {
+
+    display: block;
+
+    color: #777;
+
+    margin-top: 3px;
+
+    font-size: 12px;
 
 }
 
@@ -534,9 +714,9 @@ header {
 
     border-radius: 12px;
 
-    background: #25D366;
+    background: var(--green);
 
-    color: white;
+    color: #ffffff;
 
     font-size: 17px;
 
@@ -546,25 +726,25 @@ header {
 
     transition: .35s;
 
-}
-
-
-.place-order-btn i {
-
-    margin-right: 8px;
-
-    font-size: 20px;
+    margin-top: 5px;
 
 }
 
 
 .place-order-btn:hover {
 
-    background: #128C7E;
+    background: var(--gold);
+
+    color: var(--green);
 
     transform: translateY(-3px);
 
-    box-shadow: 0 10px 25px rgba(37,211,102,.25);
+}
+
+
+.place-order-btn i {
+
+    margin-right: 8px;
 
 }
 
@@ -573,15 +753,15 @@ header {
    ORDER SUMMARY
 ========================================= */
 
-.order-summary {
+.checkout-summary {
 
-    background: white;
+    background: #ffffff;
+
+    border: 1px solid var(--border);
 
     border-radius: 22px;
 
     padding: 30px;
-
-    border: 1px solid var(--border);
 
     box-shadow: var(--shadow);
 
@@ -592,11 +772,17 @@ header {
 }
 
 
-.order-summary h2 {
+/* =========================================
+   SUMMARY HEADER
+========================================= */
 
-    color: var(--green);
+.summary-header {
 
-    font-size: 26px;
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
 
     padding-bottom: 20px;
 
@@ -607,11 +793,32 @@ header {
 }
 
 
-.order-summary h2 i {
+.summary-header i {
 
-    color: var(--gold);
+    width: 43px;
 
-    margin-right: 8px;
+    height: 43px;
+
+    border-radius: 50%;
+
+    background: #eef8f1;
+
+    color: var(--green);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.summary-header h2 {
+
+    color: var(--green);
+
+    font-size: 24px;
 
 }
 
@@ -628,7 +835,7 @@ header {
 
     gap: 15px;
 
-    max-height: 420px;
+    max-height: 400px;
 
     overflow-y: auto;
 
@@ -645,11 +852,9 @@ header {
 
     gap: 12px;
 
-    padding: 12px;
+    padding-bottom: 15px;
 
-    background: #f8faf7;
-
-    border-radius: 12px;
+    border-bottom: 1px solid #edf0ed;
 
 }
 
@@ -662,9 +867,11 @@ header {
 
     object-fit: contain;
 
-    background: white;
+    background: #f7f9f5;
 
     border-radius: 10px;
+
+    padding: 5px;
 
 }
 
@@ -680,7 +887,7 @@ header {
 
     color: var(--green);
 
-    font-size: 15px;
+    font-size: 14px;
 
     margin-bottom: 4px;
 
@@ -689,18 +896,16 @@ header {
 
 .checkout-item-info p {
 
-    color: var(--text);
+    color: #777;
 
-    font-size: 13px;
+    font-size: 12px;
 
 }
 
 
-.checkout-item-price {
+.checkout-item > strong {
 
     color: var(--green);
-
-    font-weight: 700;
 
     font-size: 14px;
 
@@ -708,7 +913,7 @@ header {
 
 
 /* =========================================
-   SUMMARY
+   SUMMARY DETAILS
 ========================================= */
 
 .summary-details {
@@ -755,11 +960,11 @@ header {
 
     align-items: center;
 
-    border-top: 1px solid var(--border);
-
     margin-top: 10px;
 
     padding-top: 20px;
+
+    border-top: 1px solid var(--border);
 
 }
 
@@ -785,10 +990,10 @@ header {
 
 
 /* =========================================
-   SECURE BOX
+   SECURE CHECKOUT
 ========================================= */
 
-.secure-box {
+.secure-checkout {
 
     display: flex;
 
@@ -796,38 +1001,38 @@ header {
 
     gap: 12px;
 
-    margin-top: 25px;
+    background: #f4faf5;
 
     padding: 15px;
 
     border-radius: 12px;
 
-    background: #eef9f1;
+    margin-top: 25px;
 
 }
 
 
-.secure-box > i {
+.secure-checkout > i {
+
+    font-size: 24px;
+
+    color: #299447;
+
+}
+
+
+.secure-checkout strong {
 
     color: var(--green);
 
-    font-size: 25px;
+    font-size: 13px;
 
 }
 
 
-.secure-box strong {
+.secure-checkout p {
 
-    color: var(--green);
-
-    font-size: 14px;
-
-}
-
-
-.secure-box p {
-
-    color: var(--text);
+    color: #777;
 
     font-size: 11px;
 
@@ -850,13 +1055,13 @@ header {
 
     gap: 8px;
 
-    margin-top: 22px;
+    margin-top: 20px;
 
     color: var(--green);
 
-    font-weight: 600;
+    font-size: 14px;
 
-    transition: .3s;
+    font-weight: 600;
 
 }
 
@@ -876,18 +1081,18 @@ header {
 
     text-align: center;
 
-    padding: 40px 15px;
+    padding: 30px 10px;
 
 }
 
 
 .empty-checkout i {
 
-    color: #cbd8d0;
+    color: #c8d3cc;
 
-    font-size: 50px;
+    font-size: 45px;
 
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 
 }
 
@@ -896,16 +1101,28 @@ header {
 
     color: var(--green);
 
-    margin-bottom: 8px;
+    font-size: 17px;
+
+    margin-bottom: 15px;
 
 }
 
 
-.empty-checkout p {
+.empty-checkout a {
 
-    color: var(--text);
+    display: inline-block;
 
-    font-size: 14px;
+    background: var(--green);
+
+    color: #ffffff;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: 600;
 
 }
 
@@ -918,7 +1135,7 @@ footer {
 
     background: var(--green-dark);
 
-    color: white;
+    color: #ffffff;
 
     text-align: center;
 
@@ -959,7 +1176,7 @@ footer p {
 
 .footer-links a {
 
-    color: white;
+    color: #ffffff;
 
     font-weight: 500;
 
@@ -1004,7 +1221,7 @@ footer p {
 
     align-items: center;
 
-    color: white;
+    color: #ffffff;
 
     font-size: 19px;
 
@@ -1054,19 +1271,24 @@ footer p {
 
     }
 
+
     .menu {
 
         gap: 20px;
 
     }
 
+
     .checkout-container {
 
         grid-template-columns: 1fr;
 
+        max-width: 850px;
+
     }
 
-    .order-summary {
+
+    .checkout-summary {
 
         position: static;
 
@@ -1076,6 +1298,13 @@ footer p {
 
 
 @media (max-width: 768px) {
+
+    .menu-toggle {
+
+        display: flex;
+
+    }
+
 
     .navbar {
 
@@ -1109,7 +1338,101 @@ footer p {
 
     .menu {
 
-        display: none;
+        position: fixed;
+
+        top: 0;
+
+        right: -100%;
+
+        width: 290px;
+
+        height: 100vh;
+
+        padding: 105px 25px 30px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+
+        background: var(--green-dark);
+
+        box-shadow:
+            -10px 0 35px rgba(0,0,0,.3);
+
+        transition: right .4s ease;
+
+        z-index: 10000;
+
+    }
+
+
+    .menu.active {
+
+        right: 0;
+
+    }
+
+
+    .menu li {
+
+        width: 100%;
+
+    }
+
+
+    .menu li a {
+
+        width: 100%;
+
+        padding: 15px 18px;
+
+        border-radius: 10px;
+
+        gap: 15px;
+
+        font-size: 16px;
+
+    }
+
+
+    .menu li a i {
+
+        width: 25px;
+
+        text-align: center;
+
+        font-size: 18px;
+
+    }
+
+
+    .menu li a:hover,
+    .menu li a.active {
+
+        background: var(--gold);
+
+        color: var(--green);
+
+        padding-left: 24px;
+
+    }
+
+
+    .menu li a:hover i,
+    .menu li a.active i {
+
+        color: var(--green);
+
+    }
+
+
+    .cart-count {
+
+        margin-right: 58px;
 
     }
 
@@ -1137,7 +1460,7 @@ footer p {
 
     .checkout-container {
 
-        margin: 50px auto;
+        margin: 55px auto;
 
         padding: 0 18px;
 
@@ -1146,21 +1469,28 @@ footer p {
 
     .checkout-form {
 
-        padding: 25px;
+        padding: 28px 22px;
 
     }
 
 
-    .order-summary {
+    .section-title h2 {
 
-        padding: 22px;
+        font-size: 21px;
 
     }
 
 
-    .payment-options {
+    .form-row {
 
         grid-template-columns: 1fr;
+
+    }
+
+
+    .checkout-summary {
+
+        padding: 25px 20px;
 
     }
 
@@ -1183,6 +1513,13 @@ footer p {
     }
 
 
+    .checkout-hero {
+
+        height: 230px;
+
+    }
+
+
     .checkout-hero h1 {
 
         font-size: 34px;
@@ -1199,28 +1536,87 @@ footer p {
 
     .checkout-form {
 
-        padding: 20px;
+        padding: 23px 17px;
 
     }
 
 
-    .checkout-form h2 {
+    .section-title {
+
+        gap: 9px;
+
+    }
+
+
+    .section-title i {
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 16px;
+
+    }
+
+
+    .section-title h2 {
+
+        font-size: 19px;
+
+    }
+
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+
+        padding: 13px 14px;
+
+        font-size: 14px;
+
+    }
+
+
+    .payment-content > i {
+
+        font-size: 21px;
+
+    }
+
+
+    .payment-content strong {
+
+        font-size: 13px;
+
+    }
+
+
+    .checkout-item img {
+
+        width: 55px;
+
+        height: 55px;
+
+    }
+
+
+    .checkout-item-info h3 {
+
+        font-size: 12px;
+
+    }
+
+
+    .checkout-item > strong {
+
+        font-size: 12px;
+
+    }
+
+
+    .summary-total strong {
 
         font-size: 22px;
-
-    }
-
-
-    .order-summary h2 {
-
-        font-size: 22px;
-
-    }
-
-
-    .place-order-btn {
-
-        font-size: 15px;
 
     }
 
