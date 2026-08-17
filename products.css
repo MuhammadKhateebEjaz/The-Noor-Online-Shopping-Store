@@ -702,23 +702,55 @@ footer p{
 
 }
 
-:root {
-    --green: #123d2c;
-    --green2: #1d5d43;
-    --green-dark: #0b2419;
-    --gold: #e5b73b;
-    --white: #ffffff;
-    --text: #666;
-    --shadow: 0 15px 40px rgba(0,0,0,.08);
+/* ==================================
+   MOBILE MENU BUTTON
+================================== */
+
+.menu-toggle {
+    display: none;
+
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: var(--gold);
+    color: var(--green);
+
+    font-size: 22px;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 10001;
+
+    transition: .3s ease;
 }
 
+.menu-toggle:hover {
+    transform: scale(1.05);
+}
+
+
+/* ==================================
+   MENU ICONS
+================================== */
 
 .menu li a {
     display: flex;
     align-items: center;
+
     gap: 8px;
 
     color: #fff;
+
     text-decoration: none;
 
     font-weight: 600;
@@ -728,7 +760,9 @@ footer p{
 
 .menu li a i {
     font-size: 15px;
+
     color: var(--gold);
+
     transition: .3s ease;
 }
 
@@ -742,11 +776,21 @@ footer p{
     color: var(--gold);
 }
 
+
+/* ==================================
+   MOBILE NAVIGATION
+================================== */
+
 @media (max-width: 768px) {
+
+    /* SHOW MENU BUTTON */
 
     .menu-toggle {
         display: flex;
     }
+
+
+    /* MOBILE MENU */
 
     .menu {
         position: fixed;
@@ -760,6 +804,7 @@ footer p{
         padding: 105px 25px 30px;
 
         display: flex;
+
         flex-direction: column;
 
         gap: 8px;
@@ -773,15 +818,23 @@ footer p{
         z-index: 10000;
     }
 
+
+    /* OPEN MENU */
+
     .menu.active {
         right: 0;
     }
+
+
+    /* MENU ITEMS */
 
     .menu li {
         width: 100%;
     }
 
+
     .menu li a {
+
         width: 100%;
 
         padding: 15px 18px;
@@ -789,6 +842,7 @@ footer p{
         border-radius: 10px;
 
         display: flex;
+
         align-items: center;
 
         gap: 15px;
@@ -796,7 +850,11 @@ footer p{
         font-size: 16px;
     }
 
+
+    /* ICON */
+
     .menu li a i {
+
         width: 25px;
 
         text-align: center;
@@ -806,8 +864,12 @@ footer p{
         color: var(--gold);
     }
 
+
+    /* ACTIVE / HOVER */
+
     .menu li a:hover,
     .menu li a.active {
+
         background: var(--gold);
 
         color: var(--green);
@@ -815,12 +877,18 @@ footer p{
         padding-left: 24px;
     }
 
+
     .menu li a:hover i,
     .menu li a.active i {
+
         color: var(--green);
     }
+
+
+    /* CART */
 
     .cart {
         margin-right: 58px;
     }
+
 }
