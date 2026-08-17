@@ -254,61 +254,109 @@ console.log("%cThe Noor Online Shopping Store",
 console.log("%cDesigned & Developed by M.Khateeb Ejaz",
 "color:#123d2c;font-size:15px;");
 
-/* ========================================
-   MOBILE MENU
-======================================== */
+// /* ========================================
+//    MOBILE MENU
+// ======================================== */
 
-document.addEventListener("DOMContentLoaded", function () {
+// document.addEventListener("DOMContentLoaded", function () {
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".menu");
+//     const menuToggle = document.querySelector(".menu-toggle");
+//     const menu = document.querySelector(".menu");
 
-    if (!menuToggle || !menu) {
-        return;
-    }
+//     if (!menuToggle || !menu) {
+//         return;
+//     }
 
+
+//     menuToggle.addEventListener("click", function () {
+
+//         menu.classList.toggle("active");
+
+
+//         if (menu.classList.contains("active")) {
+
+//             menuToggle.innerHTML = "✕";
+//             menuToggle.setAttribute(
+//                 "aria-label",
+//                 "Close navigation menu"
+//             );
+
+//         } else {
+
+//             menuToggle.innerHTML = "☰";
+//             menuToggle.setAttribute(
+//                 "aria-label",
+//                 "Open navigation menu"
+//             );
+
+//         }
+
+//     });
+
+
+//     /* Close menu after clicking a link */
+
+//     const menuLinks =
+//         menu.querySelectorAll("a");
+
+//     menuLinks.forEach(function (link) {
+
+//         link.addEventListener("click", function () {
+
+//             menu.classList.remove("active");
+
+//             menuToggle.innerHTML = "☰";
+
+//         });
+
+//     });
+
+// });
+// ========================================
+// MOBILE MENU
+// ========================================
+
+const menuToggle = document.getElementById("menuToggle");
+const mainMenu = document.getElementById("mainMenu");
+
+if (menuToggle && mainMenu) {
 
     menuToggle.addEventListener("click", function () {
 
-        menu.classList.toggle("active");
+        mainMenu.classList.toggle("active");
 
+        const icon = menuToggle.querySelector("i");
 
-        if (menu.classList.contains("active")) {
+        if (mainMenu.classList.contains("active")) {
 
-            menuToggle.innerHTML = "✕";
-            menuToggle.setAttribute(
-                "aria-label",
-                "Close navigation menu"
-            );
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-xmark");
 
         } else {
 
-            menuToggle.innerHTML = "☰";
-            menuToggle.setAttribute(
-                "aria-label",
-                "Open navigation menu"
-            );
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
 
         }
 
     });
 
 
-    /* Close menu after clicking a link */
+    // Close menu after clicking a link
 
-    const menuLinks =
-        menu.querySelectorAll("a");
+    mainMenu.querySelectorAll("a").forEach(function(link) {
 
-    menuLinks.forEach(function (link) {
+        link.addEventListener("click", function() {
 
-        link.addEventListener("click", function () {
+            mainMenu.classList.remove("active");
 
-            menu.classList.remove("active");
+            const icon = menuToggle.querySelector("i");
 
-            menuToggle.innerHTML = "☰";
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
 
         });
 
     });
 
-});
+}
