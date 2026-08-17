@@ -1233,3 +1233,12 @@ footer p{
 }
 
 }
+:root {
+    --green: #123d2c;
+    --green2: #1d5d43;
+    --green-dark: #0b2419;
+    --gold: #e5b73b;
+    --white: #ffffff;
+    --text: #666;
+    --shadow: 0 15px 40px rgba(0,0,0,.08);
+}
