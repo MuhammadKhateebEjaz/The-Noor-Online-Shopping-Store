@@ -21,51 +21,79 @@
 <!-- ================= NAVBAR ================= -->
 
 <header>
-<!-- MOBILE MENU BUTTON -->
 
-      <nav class="navbar">
+    <!-- MOBILE MENU BUTTON -->
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation menu"
+    >
+        <i class="fa-solid fa-bars"></i>
+    </button>
 
-    <a href="#" class="logo">
-        <i class="fa-solid fa-leaf"></i>
 
-        <div>
-            <h2>The Noor</h2>
-            <span>ONLINE SHOPPING STORE</span>
-        </div>
-    </a>
+    <nav class="navbar">
 
-    <ul class="menu">
+        <!-- LOGO -->
 
-        <li>
-            <a class="active" href="#">Home</a>
-        </li>
+        <a href="index.html" class="logo">
 
-        <li>
-            <a href="about.html">About</a>
-        </li>
+            <i class="fa-solid fa-leaf"></i>
 
-        <li>
-            <a href="products.html">Products</a>
-        </li>
+            <div>
 
-        <li>
-            <a href="contact.html">Contact</a>
-        </li>
+                <h2>The Noor</h2>
 
-    </ul>
+                <span>
+                    ONLINE SHOPPING STORE
+                </span>
 
-    <a href="cart.html" class="cart">
+            </div>
 
-        <i class="fa-solid fa-cart-shopping"></i>
+        </a>
 
-        Cart
 
-        <span>0</span>
+        <!-- MENU -->
 
-    </a>
+        <ul class="menu" id="mainMenu">
 
-</nav>
-        </div>
+            <li>
+                <a class="active" href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="about.html">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="products.html">
+                    Products
+                </a>
+            </li>
+
+            <li>
+                <a href="contact.html">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+
+        <!-- CART -->
+
+        <a href="cart.html" class="cart">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span>0</span>
+
+        </a>
 
     </nav>
 
