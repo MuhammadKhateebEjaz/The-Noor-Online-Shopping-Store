@@ -27,46 +27,78 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
 
 <header>
 
-<nav class="navbar">
+    <!-- MOBILE MENU BUTTON -->
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation menu"
+    >
+        <i class="fa-solid fa-bars"></i>
+    </button>
 
-<a href="index.html" class="logo">
+    <nav class="navbar">
 
-<i class="fa-solid fa-leaf"></i>
+        <!-- LOGO -->
+        <a href="index.html" class="logo">
 
-<div>
+            <i class="fa-solid fa-leaf"></i>
 
-<h2>The Noor</h2>
+            <div>
+                <h2>The Noor</h2>
 
-<span>ONLINE SHOPPING STORE</span>
+                <span>
+                    ONLINE SHOPPING STORE
+                </span>
+            </div>
 
-</div>
+        </a>
 
-</a>
+        <!-- MENU -->
+        <ul class="menu" id="mainMenu">
 
-<ul class="menu">
+            <li>
+                <a href="index.html">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
+            </li>
 
-<li><a href="index.html">Home</a></li>
+            <li>
+                <a href="about.html">
+                    <i class="fa-solid fa-circle-info"></i>
+                    About
+                </a>
+            </li>
 
-<li><a href="about.html">About</a></li>
+            <li>
+                <a href="products.html">
+                    <i class="fa-solid fa-box-open"></i>
+                    Products
+                </a>
+            </li>
 
-<li><a href="products.html">Products</a></li>
+            <li>
+                <a class="active" href="contact.html">
+                    <i class="fa-solid fa-envelope"></i>
+                    Contact
+                </a>
+            </li>
 
-<li><a class="active" href="#">Contact</a></li>
+        </ul>
 
-</ul>
+        <!-- CART -->
+        <a href="cart.html" class="cart">
 
-<div class="cart">
+            <i class="fa-solid fa-cart-shopping"></i>
 
-<i class="fa-solid fa-cart-shopping"></i>
+            <span>0</span>
 
-<span>0</span>
+        </a>
 
-</div>
-
-</nav>
+    </nav>
 
 </header>
-
 <!-- ================= HERO ================= -->
 
 <section class="contact-hero">
