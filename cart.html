@@ -33,63 +33,68 @@
 <body>
 
 
-<!-- ========================================
-     NAVBAR
-======================================== -->
-
 <header>
+
+    <!-- MOBILE MENU BUTTON -->
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation menu"
+    >
+        <i class="fa-solid fa-bars"></i>
+    </button>
 
     <nav class="navbar">
 
-
         <!-- LOGO -->
-
         <a href="index.html" class="logo">
 
             <i class="fa-solid fa-leaf"></i>
 
             <div>
-
                 <h2>The Noor</h2>
-
                 <span>ONLINE SHOPPING STORE</span>
-
             </div>
 
         </a>
 
 
         <!-- MENU -->
-
-        <ul class="menu">
+        <ul class="menu" id="mainMenu">
 
             <li>
                 <a href="index.html">
-                    Home
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
                 </a>
             </li>
 
             <li>
                 <a href="about.html">
-                    About
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>About</span>
                 </a>
             </li>
 
             <li>
                 <a href="products.html">
-                    Products
+                    <i class="fa-solid fa-box-open"></i>
+                    <span>Products</span>
                 </a>
             </li>
 
             <li>
                 <a href="contact.html">
-                    Contact
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Contact</span>
                 </a>
             </li>
 
             <li>
-                <a href="#" class="active">
-                    Cart
+                <a href="cart.html" class="active">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Cart</span>
                 </a>
             </li>
 
@@ -97,7 +102,6 @@
 
 
         <!-- CART -->
-
         <a href="cart.html" class="cart-count">
 
             <i class="fa-solid fa-cart-shopping"></i>
@@ -105,7 +109,6 @@
             <span>0</span>
 
         </a>
-
 
     </nav>
 
