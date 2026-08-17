@@ -1172,3 +1172,194 @@ footer p {
     }
 
 }
+/* ========================================
+   MENU TOGGLE
+======================================== */
+
+.menu-toggle {
+
+    display: none;
+
+    position: fixed;
+
+    top: 20px;
+    right: 18px;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: var(--gold);
+    color: var(--green);
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 10002;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,.2);
+
+}
+
+
+/* ========================================
+   MENU ICONS
+======================================== */
+
+.menu li a {
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    color: #fff;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    transition: .3s ease;
+}
+
+.menu li a i {
+
+    font-size: 15px;
+
+    color: var(--gold);
+
+    width: 20px;
+
+    text-align: center;
+
+    transition: .3s ease;
+}
+
+
+.menu li a:hover,
+.menu li a.active {
+
+    color: var(--gold);
+}
+
+
+.menu li a:hover i,
+.menu li a.active i {
+
+    color: var(--gold);
+}
+
+
+/* ========================================
+   MOBILE MENU
+======================================== */
+
+@media (max-width: 768px) {
+
+    .menu-toggle {
+
+        display: flex;
+    }
+
+
+    .menu {
+
+        position: fixed;
+
+        top: 0;
+        right: -100%;
+
+        width: 290px;
+        height: 100vh;
+
+        padding: 105px 25px 30px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+
+        background: var(--green);
+
+        box-shadow: -10px 0 35px rgba(0,0,0,.3);
+
+        transition: right .4s ease;
+
+        z-index: 10000;
+    }
+
+
+    .menu.active {
+
+        right: 0;
+    }
+
+
+    .menu li {
+
+        width: 100%;
+    }
+
+
+    .menu li a {
+
+        width: 100%;
+
+        padding: 15px 18px;
+
+        border-radius: 10px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 15px;
+
+        font-size: 16px;
+    }
+
+
+    .menu li a i {
+
+        width: 25px;
+
+        text-align: center;
+
+        font-size: 18px;
+
+        color: var(--gold);
+    }
+
+
+    .menu li a:hover,
+    .menu li a.active {
+
+        background: var(--gold);
+
+        color: var(--green);
+
+        padding-left: 24px;
+    }
+
+
+    .menu li a:hover i,
+    .menu li a.active i {
+
+        color: var(--green);
+    }
+
+
+    .cart-count {
+
+        margin-right: 58px;
+    }
+
+}
