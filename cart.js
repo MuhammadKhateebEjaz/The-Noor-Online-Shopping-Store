@@ -1,58 +1,55 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ===============================
-    // GET CART FROM LOCAL STORAGE
-    // ===============================
-
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-
-    // ===============================
-    // ELEMENTS
-    // ===============================
+    // ========================================
+    // CART ELEMENTS
+    // ========================================
 
     const cartItems = document.querySelector(".cart-items");
     const subtotal = document.getElementById("subtotal");
     const total = document.getElementById("total");
 
 
-    // ===============================
-    // CHECK ELEMENTS
-    // ===============================
+    // ========================================
+    // IF NOT CART PAGE, STOP
+    // ========================================
 
     if (!cartItems || !subtotal || !total) {
-
-        console.error("Cart HTML elements are missing.");
-
         return;
-
     }
 
 
-    // ===============================
+    // ========================================
+    // GET CART
+    // ========================================
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+    // ========================================
     // DISPLAY CART
-    // ===============================
+    // ========================================
 
     function displayCart() {
 
         cartItems.innerHTML = "";
 
-        let totalAmount = 0;
+        let sum = 0;
 
 
         // EMPTY CART
-
         if (cart.length === 0) {
 
             cartItems.innerHTML = `
-            
+
                 <div class="empty-cart">
 
                     <i class="fa-solid fa-cart-shopping"></i>
 
                     <h2>Your Cart is Empty</h2>
 
-                    <p>Add some products to your cart.</p>
+                    <p>
+                        You haven't added any products yet.
+                    </p>
 
                     <a href="products.html">
                         Continue Shopping
@@ -65,55 +62,61 @@ document.addEventListener("DOMContentLoaded", function () {
             subtotal.textContent = "Rs.0";
             total.textContent = "Rs.0";
 
-            updateCartCounter();
+            updateCartCount();
 
             return;
-
         }
 
 
-        // ===============================
-        // SHOW PRODUCTS
-        // ===============================
+        // ========================================
+        // PRODUCTS
+        // ========================================
 
         cart.forEach(function (item, index) {
 
-            const price = Number(item.price);
-            const quantity = Number(item.qty);
+            const price = Number(item.price) || 0;
+            const qty = Number(item.qty) || 1;
 
-            totalAmount += price * quantity;
+            sum += price * qty;
 
 
             cartItems.innerHTML += `
 
                 <div class="cart-item">
 
-                    <img 
-                        src="${item.image}" 
+                    <img
+                        src="${item.image}"
                         alt="${item.name}"
                     >
 
+
                     <div class="details">
 
-                        <h3>${item.name}</h3>
+                        <h3>
+                            ${item.name}
+                        </h3>
 
-                        <p>Rs.${price}</p>
+                        <p>
+                            Rs.${price}
+                        </p>
 
                     </div>
 
 
                     <div class="quantity">
 
-                        <button 
+                        <button
+                            type="button"
                             onclick="decreaseQty(${index})">
                             −
                         </button>
 
                         <span>
-                            ${quantity}
+                            ${qty}
                         </span>
 
-                        <button 
+                        <button
+                            type="button"
                             onclick="increaseQty(${index})">
                             +
                         </button>
@@ -123,15 +126,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     <strong class="item-total">
 
-                        Rs.${price * quantity}
+                        Rs.${price * qty}
 
                     </strong>
 
 
-                    <button 
+                    <button
+                        type="button"
                         class="remove"
-                        onclick="removeCart(${index})"
-                    >
+                        onclick="removeCart(${index})">
 
                         <i class="fa-solid fa-trash"></i>
 
@@ -144,42 +147,46 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        // ===============================
-        // UPDATE TOTAL
-        // ===============================
+        // ========================================
+        // TOTAL
+        // ========================================
 
-        subtotal.textContent = "Rs." + totalAmount;
+        subtotal.textContent = "Rs." + sum;
 
-        total.textContent = "Rs." + totalAmount;
+        total.textContent = "Rs." + sum;
 
 
-        updateCartCounter();
+        updateCartCount();
 
     }
 
 
-    // ===============================
-    // INCREASE QUANTITY
-    // ===============================
+    // ========================================
+    // INCREASE
+    // ========================================
 
     window.increaseQty = function (index) {
 
-        cart[index].qty++;
+        cart[index].qty =
+            Number(cart[index].qty) + 1;
 
         saveCart();
 
     };
 
 
-    // ===============================
-    // DECREASE QUANTITY
-    // ===============================
+    // ========================================
+    // DECREASE
+    // ========================================
 
     window.decreaseQty = function (index) {
 
-        if (cart[index].qty > 1) {
+        const qty = Number(cart[index].qty);
 
-            cart[index].qty--;
+
+        if (qty > 1) {
+
+            cart[index].qty = qty - 1;
 
         } else {
 
@@ -187,14 +194,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
+
         saveCart();
 
     };
 
 
-    // ===============================
-    // REMOVE PRODUCT
-    // ===============================
+    // ========================================
+    // REMOVE
+    // ========================================
 
     window.removeCart = function (index) {
 
@@ -205,9 +213,9 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
 
-    // ===============================
-    // SAVE CART
-    // ===============================
+    // ========================================
+    // SAVE
+    // ========================================
 
     function saveCart() {
 
@@ -221,36 +229,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // ===============================
-    // CART COUNTER
-    // ===============================
+    // ========================================
+    // CART COUNT
+    // ========================================
 
-    function updateCartCounter() {
+    function updateCartCount() {
 
         const count = cart.reduce(
-            function (total, item) {
+            function (sum, item) {
 
-                return total + Number(item.qty);
+                return sum + Number(item.qty || 1);
 
             },
             0
         );
 
 
-        document
-            .querySelectorAll(".cart span, .cart-count span")
-            .forEach(function (counter) {
+        const counters =
+            document.querySelectorAll(
+                ".cart-count span, .cart span"
+            );
 
-                counter.textContent = count;
 
-            });
+        counters.forEach(function (counter) {
+
+            counter.textContent = count;
+
+        });
 
     }
 
 
-    // ===============================
+    // ========================================
     // START
-    // ===============================
+    // ========================================
 
     displayCart();
 
