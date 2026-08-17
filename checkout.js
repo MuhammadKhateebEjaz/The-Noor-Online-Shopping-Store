@@ -57,12 +57,10 @@ function displayCheckoutItems() {
         return;
     }
 
-
     checkoutItems.innerHTML = "";
 
 
     // EMPTY CART
-
     if (cart.length === 0) {
 
         checkoutItems.innerHTML = `
@@ -198,7 +196,6 @@ function createWhatsAppMessage(
     total
 ) {
 
-
     let message =
         "🛍️ *NEW ORDER - THE NOOR ONLINE SHOPPING STORE*";
 
@@ -247,9 +244,6 @@ function createWhatsAppMessage(
 
 
     message += "🛒 *Order Details*";
-
-
-    message += "\n";
 
 
     cart.forEach((item, index) => {
@@ -342,47 +336,45 @@ if (checkoutForm) {
 
             // GET CUSTOMER DATA
 
-            const name =
-                document
-                .getElementById("customerName")
-                .value
-                .trim();
+            const nameElement =
+                document.getElementById("customerName");
 
+            const phoneElement =
+                document.getElementById("customerPhone");
+
+            const whatsappElement =
+                document.getElementById("whatsappNumber");
+
+            const emailElement =
+                document.getElementById("customerEmail");
+
+            const addressElement =
+                document.getElementById("customerAddress");
+
+            const cityElement =
+                document.getElementById("customerCity");
+
+
+            const name =
+                nameElement ? nameElement.value.trim() : "";
 
             const phone =
-                document
-                .getElementById("customerPhone")
-                .value
-                .trim();
-
+                phoneElement ? phoneElement.value.trim() : "";
 
             const whatsapp =
-                document
-                .getElementById("whatsappNumber")
-                .value
-                .trim();
-
+                whatsappElement ? whatsappElement.value.trim() : "";
 
             const email =
-                document
-                .getElementById("customerEmail")
-                .value
-                .trim();
-
+                emailElement ? emailElement.value.trim() : "";
 
             const address =
-                document
-                .getElementById("customerAddress")
-                .value
-                .trim();
-
+                addressElement ? addressElement.value.trim() : "";
 
             const city =
-                document
-                .getElementById("customerCity")
-                .value
-                .trim();
+                cityElement ? cityElement.value.trim() : "";
 
+
+            // PAYMENT METHOD
 
             const paymentElement =
                 document.querySelector(
@@ -396,13 +388,9 @@ if (checkoutForm) {
                     : "Cash on Delivery";
 
 
-            // TOTAL
-
-            const total =
-                calculateTotal();
-
-
+            // ========================================
             // VALIDATION
+            // ========================================
 
             if (
                 !name ||
@@ -421,7 +409,17 @@ if (checkoutForm) {
             }
 
 
-            // CREATE MESSAGE
+            // ========================================
+            // CALCULATE TOTAL
+            // ========================================
+
+            const total =
+                calculateTotal();
+
+
+            // ========================================
+            // CREATE WHATSAPP MESSAGE
+            // ========================================
 
             const message =
                 createWhatsAppMessage(
@@ -436,24 +434,25 @@ if (checkoutForm) {
                 );
 
 
+            // ========================================
             // ENCODE MESSAGE
+            // ========================================
 
             const encodedMessage =
                 encodeURIComponent(message);
 
 
+            // ========================================
             // WHATSAPP URL
+            // ========================================
 
             const whatsappURL =
                 `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
 
-            // CLEAR CART
-
-            localStorage.removeItem("cart");
-
-
+            // ========================================
             // OPEN WHATSAPP
+            // ========================================
 
             window.open(
                 whatsappURL,
@@ -461,12 +460,23 @@ if (checkoutForm) {
             );
 
 
+            // ========================================
+            // CLEAR CART
+            // ========================================
+
+            localStorage.removeItem("cart");
+
+
+            // ========================================
             // RESET FORM
+            // ========================================
 
             checkoutForm.reset();
 
 
-            // UPDATE CART COUNT
+            // ========================================
+            // UPDATE CART COUNTER
+            // ========================================
 
             document
                 .querySelectorAll(
@@ -478,6 +488,12 @@ if (checkoutForm) {
 
                 });
 
+
+            // ========================================
+            // UPDATE LOCAL CART
+            // ========================================
+
+            cart = [];
 
         }
     );
