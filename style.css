@@ -1160,3 +1160,127 @@ footer p{
 }
 
 }
+
+/* ========================================
+   MOBILE MENU
+======================================== */
+
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: var(--gold);
+    color: var(--green);
+
+    font-size: 25px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    z-index: 2000;
+}
+
+
+/* ========================================
+   TABLET / MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .navbar {
+        padding: 15px 20px;
+    }
+
+
+    .menu {
+
+        position: fixed;
+
+        top: 0;
+        right: -100%;
+
+        width: 280px;
+        height: 100vh;
+
+        background: var(--green);
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 0;
+
+        padding: 100px 30px 30px;
+
+        transition: 0.4s ease;
+
+        z-index: 1500;
+
+        box-shadow:
+            -10px 0 30px rgba(0,0,0,.2);
+    }
+
+
+    .menu.active {
+        right: 0;
+    }
+
+
+    .menu li {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+
+    .menu li a {
+
+        display: block;
+
+        width: 100%;
+
+        padding: 15px;
+
+        border-radius: 10px;
+
+        color: #fff;
+
+        font-size: 17px;
+    }
+
+
+    .menu li a:hover,
+    .menu li a.active {
+
+        background: var(--gold);
+
+        color: var(--green);
+    }
+
+
+    .cart {
+
+        margin-right: 65px;
+
+        position: relative;
+
+        z-index: 1600;
+    }
+
+}
