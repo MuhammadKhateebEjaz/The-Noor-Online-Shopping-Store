@@ -22,47 +22,84 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
 
 <body>
 
-<!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
 
 <header>
 
-<nav class="navbar">
+    <!-- MOBILE MENU BUTTON -->
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation menu"
+    >
+        <i class="fa-solid fa-bars"></i>
+    </button>
 
-<a href="index.html" class="logo">
 
-<i class="fa-solid fa-leaf"></i>
+    <nav class="navbar">
 
-<div>
+        <!-- LOGO -->
 
-<h2>The Noor</h2>
+        <a href="index.html" class="logo">
 
-<span>ONLINE SHOPPING STORE</span>
+            <i class="fa-solid fa-leaf"></i>
 
-</div>
+            <div>
 
-</a>
+                <h2>The Noor</h2>
 
-<ul class="menu">
+                <span>
+                    ONLINE SHOPPING STORE
+                </span>
 
-<li><a href="index.html">Home</a></li>
+            </div>
 
-<li><a class="active" href="#">About</a></li>
+        </a>
 
-<li><a href="products.html">Products</a></li>
 
-<li><a href="contact.html">Contact</a></li>
+        <!-- MENU -->
 
-</ul>
+        <ul class="menu" id="mainMenu">
 
-<div class="cart">
+            <li>
+                <a class="active" href="index.html">
+                    Home
+                </a>
+            </li>
 
-<i class="fa-solid fa-cart-shopping"></i>
+            <li>
+                <a href="about.html">
+                    About
+                </a>
+            </li>
 
-<span>1</span>
+            <li>
+                <a href="products.html">
+                    Products
+                </a>
+            </li>
 
-</div>
+            <li>
+                <a href="contact.html">
+                    Contact
+                </a>
+            </li>
 
-</nav>
+        </ul>
+
+
+        <!-- CART -->
+
+        <a href="cart.html" class="cart">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span>0</span>
+
+        </a>
+
+    </nav>
 
 </header>
 
