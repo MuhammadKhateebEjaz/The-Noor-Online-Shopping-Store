@@ -766,3 +766,201 @@ footer p{
 }
 
 }
+/* ========================================
+   MOBILE MENU BUTTON
+======================================== */
+
+.menu-toggle {
+
+    display: none;
+
+    position: fixed;
+
+    top: 18px;
+    right: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: var(--gold);
+    color: var(--green);
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 10001;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,.2);
+}
+
+
+/* ========================================
+   MOBILE NAVIGATION
+======================================== */
+
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .logo {
+        margin-right: 55px;
+    }
+
+    .logo i {
+        font-size: 30px;
+    }
+
+    .logo h2 {
+        font-size: 25px;
+    }
+
+    .logo span {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+
+    /* MOBILE MENU */
+
+    .menu {
+
+        position: fixed;
+
+        top: 0;
+        right: -100%;
+
+        width: 290px;
+        height: 100vh;
+
+        padding: 100px 25px 30px;
+
+        background: #0b2419;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 8px;
+
+        box-shadow: -10px 0 35px rgba(0,0,0,.3);
+
+        transition: right .4s ease;
+
+        z-index: 10000;
+    }
+
+
+    /* OPEN MENU */
+
+    .menu.active {
+        right: 0;
+    }
+
+
+    .menu li {
+        width: 100%;
+    }
+
+
+    .menu li a {
+
+        width: 100%;
+
+        padding: 15px 18px;
+
+        border-radius: 10px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 15px;
+
+        color: #fff;
+
+        font-size: 16px;
+
+        font-weight: 600;
+
+        transition: .3s ease;
+    }
+
+
+    /* MENU ICONS */
+
+    .menu li a i {
+
+        width: 25px;
+
+        text-align: center;
+
+        font-size: 18px;
+
+        color: var(--gold);
+    }
+
+
+    /* HOVER + ACTIVE */
+
+    .menu li a:hover,
+    .menu li a.active {
+
+        background: var(--gold);
+
+        color: var(--green);
+
+        padding-left: 24px;
+    }
+
+
+    .menu li a:hover i,
+    .menu li a.active i {
+
+        color: var(--green);
+    }
+
+
+    /* CART */
+
+    .cart {
+        margin-right: 58px;
+    }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+    .menu {
+
+        width: 270px;
+
+    }
+
+    .menu-toggle {
+
+        right: 15px;
+
+        width: 42px;
+        height: 42px;
+
+    }
+
+}
