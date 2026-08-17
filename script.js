@@ -253,3 +253,62 @@ console.log("%cThe Noor Online Shopping Store",
 
 console.log("%cDesigned & Developed by M.Khateeb Ejaz",
 "color:#123d2c;font-size:15px;");
+
+/* ========================================
+   MOBILE MENU
+======================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".menu");
+
+    if (!menuToggle || !menu) {
+        return;
+    }
+
+
+    menuToggle.addEventListener("click", function () {
+
+        menu.classList.toggle("active");
+
+
+        if (menu.classList.contains("active")) {
+
+            menuToggle.innerHTML = "✕";
+            menuToggle.setAttribute(
+                "aria-label",
+                "Close navigation menu"
+            );
+
+        } else {
+
+            menuToggle.innerHTML = "☰";
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open navigation menu"
+            );
+
+        }
+
+    });
+
+
+    /* Close menu after clicking a link */
+
+    const menuLinks =
+        menu.querySelectorAll("a");
+
+    menuLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            menu.classList.remove("active");
+
+            menuToggle.innerHTML = "☰";
+
+        });
+
+    });
+
+});
