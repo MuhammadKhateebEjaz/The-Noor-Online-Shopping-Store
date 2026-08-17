@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -24,291 +25,346 @@
 
     <!-- Checkout CSS -->
     <link rel="stylesheet" href="checkout.css">
+
 </head>
+
 
 <body>
 
-    <!-- ========================================
-         NAVBAR
-    ======================================== -->
 
-    <header>
+<!-- =========================================
+     NAVBAR
+========================================= -->
 
-        <nav class="navbar">
+<header>
 
-            <!-- LOGO -->
+    <nav class="navbar">
 
-            <a href="index.html" class="logo">
+        <!-- LOGO -->
 
-                <i class="fa-solid fa-leaf"></i>
+        <a href="index.html" class="logo">
 
-                <div>
-                    <h2>The Noor</h2>
-                    <span>ONLINE SHOPPING STORE</span>
-                </div>
+            <i class="fa-solid fa-leaf"></i>
 
-            </a>
+            <div>
 
+                <h2>The Noor</h2>
 
-            <!-- MENU -->
+                <span>
+                    ONLINE SHOPPING STORE
+                </span>
 
-            <ul class="menu">
+            </div>
 
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
+        </a>
 
-                <li>
-                    <a href="about.html">
-                        About
-                    </a>
-                </li>
 
-                <li>
-                    <a href="products.html">
-                        Products
-                    </a>
-                </li>
+        <!-- MENU -->
 
-                <li>
-                    <a href="contact.html">
-                        Contact
-                    </a>
-                </li>
+        <ul class="menu">
 
-                <li>
-                    <a href="cart.html">
-                        Cart
-                    </a>
-                </li>
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
 
-            </ul>
+            <li>
+                <a href="about.html">
+                    About
+                </a>
+            </li>
 
+            <li>
+                <a href="products.html">
+                    Products
+                </a>
+            </li>
 
-            <!-- CART -->
+            <li>
+                <a href="contact.html">
+                    Contact
+                </a>
+            </li>
 
-            <a href="cart.html" class="cart-count">
+            <li>
+                <a href="cart.html">
+                    Cart
+                </a>
+            </li>
 
-                <i class="fa-solid fa-cart-shopping"></i>
+        </ul>
 
-                <span>0</span>
 
-            </a>
+        <!-- CART -->
 
-        </nav>
+        <a href="cart.html" class="cart-count">
 
-    </header>
+            <i class="fa-solid fa-cart-shopping"></i>
 
+            <span>0</span>
 
-    <!-- ========================================
-         HERO
-    ======================================== -->
+        </a>
 
-    <section class="checkout-hero">
+    </nav>
 
-        <h1>Checkout</h1>
+</header>
 
-        <p>Complete your order securely</p>
 
-    </section>
 
+<!-- =========================================
+     HERO
+========================================= -->
 
-    <!-- ========================================
-         CHECKOUT
-    ======================================== -->
+<section class="checkout-hero">
 
-    <section class="checkout">
+    <h1>
+        Checkout
+    </h1>
 
-        <!-- CUSTOMER INFORMATION -->
+    <p>
+        Complete your order
+    </p>
 
-        <div class="checkout-form">
+</section>
 
-            <h2>
-                <i class="fa-solid fa-user"></i>
-                Customer Information
-            </h2>
 
 
-            <form id="checkoutForm">
+<!-- =========================================
+     CHECKOUT
+========================================= -->
 
-                <!-- NAME -->
+<section class="checkout-container">
 
-                <div class="form-group">
 
-                    <label for="name">
-                        Full Name *
-                    </label>
+    <!-- =====================================
+         CUSTOMER INFORMATION
+    ====================================== -->
 
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Enter your full name"
-                        required
-                    >
+    <div class="checkout-form">
 
-                </div>
+        <h2>
+            <i class="fa-solid fa-user"></i>
+            Customer Information
+        </h2>
 
 
-                <!-- PHONE -->
+        <form id="checkoutForm">
 
-                <div class="form-group">
 
-                    <label for="phone">
-                        Phone Number *
-                    </label>
+            <!-- NAME -->
 
-                    <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        placeholder="03XX XXXXXXX"
-                        required
-                    >
+            <div class="form-group">
 
-                </div>
+                <label for="customerName">
+                    Full Name
+                </label>
 
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Enter your full name"
+                    required
+                >
 
-                <!-- CITY -->
+            </div>
 
-                <div class="form-group">
 
-                    <label for="city">
-                        City *
-                    </label>
+            <!-- PHONE -->
 
-                    <input
-                        type="text"
-                        id="city"
-                        name="city"
-                        placeholder="Enter your city"
-                        required
-                    >
+            <div class="form-group">
 
-                </div>
+                <label for="customerPhone">
+                    Phone Number
+                </label>
 
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="03XX XXXXXXX"
+                    required
+                >
 
-                <!-- ADDRESS -->
+            </div>
 
-                <div class="form-group">
 
-                    <label for="address">
-                        Complete Address *
-                    </label>
+            <!-- WHATSAPP -->
 
-                    <textarea
-                        id="address"
-                        name="address"
-                        rows="4"
-                        placeholder="House/Flat, Street, Area, City"
-                        required
-                    ></textarea>
+            <div class="form-group">
 
-                </div>
+                <label for="whatsappNumber">
+                    WhatsApp Number
+                </label>
 
+                <input
+                    type="tel"
+                    id="whatsappNumber"
+                    placeholder="03XX XXXXXXX"
+                    required
+                >
 
-                <!-- NOTE -->
+            </div>
 
-                <div class="form-group">
 
-                    <label for="note">
-                        Order Note
-                    </label>
+            <!-- EMAIL -->
 
-                    <textarea
-                        id="note"
-                        name="note"
-                        rows="3"
-                        placeholder="Any special instructions? (Optional)"
-                    ></textarea>
+            <div class="form-group">
 
-                </div>
+                <label for="customerEmail">
+                    Email Address
+                </label>
 
+                <input
+                    type="email"
+                    id="customerEmail"
+                    placeholder="example@gmail.com"
+                >
 
-                <!-- PAYMENT -->
+            </div>
 
-                <div class="payment-box">
 
-                    <h3>
-                        <i class="fa-solid fa-money-bill-wave"></i>
-                        Payment Method
-                    </h3>
+            <!-- ADDRESS -->
 
-                    <div class="payment-option">
+            <div class="form-group">
+
+                <label for="customerAddress">
+                    Complete Address
+                </label>
+
+                <textarea
+                    id="customerAddress"
+                    rows="4"
+                    placeholder="House No, Street, Area..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- CITY -->
+
+            <div class="form-group">
+
+                <label for="customerCity">
+                    City
+                </label>
+
+                <input
+                    type="text"
+                    id="customerCity"
+                    placeholder="Karachi"
+                    required
+                >
+
+            </div>
+
+
+            <!-- PAYMENT -->
+
+            <div class="form-group">
+
+                <label>
+                    Payment Method
+                </label>
+
+
+                <div class="payment-options">
+
+
+                    <label class="payment-option">
 
                         <input
                             type="radio"
-                            id="cod"
                             name="payment"
                             value="Cash on Delivery"
                             checked
                         >
 
-                        <label for="cod">
+                        <span>
 
-                            <i class="fa-solid fa-truck"></i>
+                            <i class="fa-solid fa-money-bill-wave"></i>
 
                             Cash on Delivery
 
-                        </label>
+                        </span>
 
-                    </div>
+                    </label>
+
+
+                    <label class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Bank Transfer"
+                        >
+
+                        <span>
+
+                            <i class="fa-solid fa-building-columns"></i>
+
+                            Bank Transfer
+
+                        </span>
+
+                    </label>
+
 
                 </div>
-
-
-                <!-- WHATSAPP BUTTON -->
-
-                <button
-                    type="submit"
-                    class="whatsapp-btn"
-                >
-
-                    <i class="fa-brands fa-whatsapp"></i>
-
-                    Place Order on WhatsApp
-
-                </button>
-
-
-                <p class="secure-text">
-
-                    <i class="fa-solid fa-shield-halved"></i>
-
-                    Your order details will be sent securely to our WhatsApp.
-
-                </p>
-
-            </form>
-
-        </div>
-
-
-        <!-- ========================================
-             ORDER SUMMARY
-        ======================================== -->
-
-        <div class="order-summary">
-
-            <h2>
-                <i class="fa-solid fa-bag-shopping"></i>
-                Your Order
-            </h2>
-
-
-            <div
-                id="checkoutItems"
-                class="checkout-items"
-            >
-
-                <!-- Products inserted by checkout.js -->
 
             </div>
 
 
-            <div class="summary-line">
+            <!-- ORDER BUTTON -->
+
+            <button
+                type="submit"
+                class="place-order-btn"
+            >
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                Place Order on WhatsApp
+
+            </button>
+
+
+        </form>
+
+    </div>
+
+
+
+    <!-- =====================================
+         ORDER SUMMARY
+    ====================================== -->
+
+    <div class="order-summary">
+
+        <h2>
+            <i class="fa-solid fa-bag-shopping"></i>
+            Your Order
+        </h2>
+
+
+        <!-- PRODUCTS -->
+
+        <div
+            id="checkoutItems"
+            class="checkout-items"
+        >
+
+            <!-- Products loaded by checkout.js -->
+
+        </div>
+
+
+        <!-- SUMMARY -->
+
+        <div class="summary-details">
+
+
+            <div class="summary-row">
 
                 <span>
                     Subtotal
@@ -321,7 +377,7 @@
             </div>
 
 
-            <div class="summary-line">
+            <div class="summary-row">
 
                 <span>
                     Shipping
@@ -347,92 +403,119 @@
             </div>
 
 
-            <a
-                href="cart.html"
-                class="back-cart"
-            >
-
-                <i class="fa-solid fa-arrow-left"></i>
-
-                Back to Cart
-
-            </a>
-
         </div>
 
-    </section>
 
+        <!-- SECURITY -->
 
-    <!-- ========================================
-         FOOTER
-    ======================================== -->
+        <div class="secure-box">
 
-    <footer>
+            <i class="fa-solid fa-shield-halved"></i>
 
-        <p>
-            © 2026 The Noor Online Shopping Store.
-            All Rights Reserved.
-        </p>
+            <div>
 
+                <strong>
+                    Secure Order
+                </strong>
 
-        <div class="footer-links">
+                <p>
+                    Your information is kept private and secure.
+                </p>
 
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="about.html">
-                About
-            </a>
-
-            <a href="products.html">
-                Products
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
+            </div>
 
         </div>
 
 
-        <div class="social">
+        <!-- BACK CART -->
 
-            <a href="#">
-                <i class="fab fa-facebook-f"></i>
-            </a>
+        <a
+            href="cart.html"
+            class="back-cart"
+        >
 
-            <a href="#">
-                <i class="fab fa-instagram"></i>
-            </a>
+            <i class="fa-solid fa-arrow-left"></i>
 
-            <a href="https://wa.me/923048045082">
-                <i class="fab fa-whatsapp"></i>
-            </a>
+            Back to Cart
 
-        </div>
+        </a>
 
-
-        <p class="developer">
-
-            Designed & Developed by
-
-            <strong>
-                M.Khateeb Ejaz
-            </strong>
-
-        </p>
-
-    </footer>
+    </div>
 
 
-    <!-- ========================================
-         JAVASCRIPT
-    ======================================== -->
+</section>
 
-    <script src="script.js"></script>
 
-    <script src="checkout.js"></script>
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    <p>
+        © 2026 The Noor Online Shopping Store.
+        All Rights Reserved.
+    </p>
+
+
+    <div class="footer-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="products.html">
+            Products
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </div>
+
+
+    <div class="social">
+
+        <a href="#">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="#">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="#">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+    </div>
+
+
+    <p class="developer">
+
+        Designed & Developed by
+
+        <strong>
+            M.Khateeb Ejaz
+        </strong>
+
+    </p>
+
+</footer>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script src="checkout.js"></script>
 
 </body>
 
